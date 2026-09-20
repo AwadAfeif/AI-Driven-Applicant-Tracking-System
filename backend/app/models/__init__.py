@@ -11,10 +11,15 @@ from app.models.m4_screening import (
 )
 from app.models.m5_subscriptions import Subscription, AiUsageLog
 
+from app.models.m6_scoring_notifications import (
+    ApplicationScore, Notification, NotificationPreference,
+)
+
 __all__ = [
     "User", "RefreshToken", "Company", "CompanyMember", "AuditLog",
     "Job", "JobRequirement",
     "Candidate", "CandidateProfile", "Resume", "Application",
     "ScreeningSession", "ScreeningQuestion", "ScreeningAnswer", "ScreeningEvaluation",
     "Subscription", "AiUsageLog",
+    "ApplicationScore", "Notification", "NotificationPreference",
 ]
