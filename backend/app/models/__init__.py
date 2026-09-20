@@ -9,10 +9,12 @@ from app.models.m3_candidates import (
 from app.models.m4_screening import (
     ScreeningSession, ScreeningQuestion, ScreeningAnswer, ScreeningEvaluation,
 )
+from app.models.m5_subscriptions import Subscription, AiUsageLog
 
 __all__ = [
     "User", "RefreshToken", "Company", "CompanyMember", "AuditLog",
     "Job", "JobRequirement",
     "Candidate", "CandidateProfile", "Resume", "Application",
     "ScreeningSession", "ScreeningQuestion", "ScreeningAnswer", "ScreeningEvaluation",
+    "Subscription", "AiUsageLog",
 ]
