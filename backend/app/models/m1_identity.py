@@ -11,15 +11,13 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.db.base import Base
 
 
-UUID_PK = dict(
-    UUID(as_uuid=True), primary_key=True, server_default=text("gen_random_uuid()"),
-)
+UUID_PK = dict(primary_key=True, server_default=text("gen_random_uuid()"))
 
 
 class User(Base):
     __tablename__ = "users"
 
-    id: Mapped[uuid.UUID] = mapped_column(**UUID_PK)
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), **UUID_PK)
     email: Mapped[str] = mapped_column(String(255), nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     platform_role: Mapped[str] = mapped_column(
@@ -47,7 +45,7 @@ class User(Base):
 class RefreshToken(Base):
     __tablename__ = "refresh_tokens"
 
-    id: Mapped[uuid.UUID] = mapped_column(**UUID_PK)
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), **UUID_PK)
     user_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("users.id", ondelete="CASCADE"), nullable=False,
@@ -82,7 +80,7 @@ class RefreshToken(Base):
 class Company(Base):
     __tablename__ = "companies"
 
-    id: Mapped[uuid.UUID] = mapped_column(**UUID_PK)
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), **UUID_PK)
     name: Mapped[str] = mapped_column(String(150), nullable=False)
     slug: Mapped[str] = mapped_column(String(150), nullable=False)
     industry: Mapped[str | None] = mapped_column(String(100))
