@@ -19,6 +19,9 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 30
     JWT_ALGORITHM: str = "HS256"
+    JWT_ISSUER: str = "ai-driven-ats"
+    BCRYPT_ROUNDS: int = 12
+    PASSWORD_MIN_LENGTH: int = 8
 
     POSTGRES_HOST: str = "postgres"
     POSTGRES_PORT: int = 5432
