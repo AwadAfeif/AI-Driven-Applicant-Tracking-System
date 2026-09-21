@@ -31,6 +31,18 @@ After the first `ai_usage_logs` or `application_scores` row is linked to an
 application, physical deletion is blocked at the DB level (`ON DELETE RESTRICT`).
 The normal path is `deleted_at = NOW()` (soft delete).
 
+## Rule 8 — Codespaces Networking
+
+In GitHub Codespaces, inter-container TCP over the default bridge network is
+not reliable. Use docker-compose.codespaces.yml which sets network_mode: host
+for both services, and set POSTGRES_HOST=127.0.0.1 in the backend.
+
+Usage:
+    docker compose -f docker-compose.codespaces.yml up -d
+
+On local Linux with working bridge networking, the default docker-compose.yml
+applies and POSTGRES_HOST=postgres.
+
 ---
 
 ## Known Limitations (v1.0)
