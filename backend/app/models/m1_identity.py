@@ -20,6 +20,7 @@ class User(Base):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), **UUID_PK)
     email: Mapped[str] = mapped_column(String(255), nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
+    full_name: Mapped[str | None] = mapped_column(String(150))
     platform_role: Mapped[str] = mapped_column(
         ENUM("user", "super_admin", name="user_platform_role", create_type=False),
         nullable=False, server_default=text("'user'"),
